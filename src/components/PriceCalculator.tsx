@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { Plus, Minus } from "lucide-react";
 
 const PriceCalculator = () => {
   const [beers, setBeers] = useState<number>(0);
@@ -12,15 +13,11 @@ const PriceCalculator = () => {
 
   const totalPrice = beers * BEER_PRICE + shots * SHOT_PRICE;
 
-  const handleBeerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value) || 0;
-    setBeers(Math.max(0, value));
-  };
-
-  const handleShotChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value) || 0;
-    setShots(Math.max(0, value));
-  };
+  const incrementBeers = () => setBeers(beers + 1);
+  const decrementBeers = () => setBeers(Math.max(0, beers - 1));
+  
+  const incrementShots = () => setShots(shots + 1);
+  const decrementShots = () => setShots(Math.max(0, shots - 1));
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-8">
@@ -39,15 +36,27 @@ const PriceCalculator = () => {
                 </Label>
                 <span className="text-sm text-muted-foreground">₪{BEER_PRICE} each</span>
               </div>
-              <Input
-                id="beers"
-                type="number"
-                min="0"
-                value={beers || ""}
-                onChange={handleBeerChange}
-                placeholder="0"
-                className="text-3xl h-16 text-center font-bold"
-              />
+              <div className="flex items-center justify-center gap-4">
+                <Button
+                  onClick={decrementBeers}
+                  size="lg"
+                  variant="outline"
+                  className="h-16 w-16"
+                >
+                  <Minus className="h-6 w-6" />
+                </Button>
+                <div className="text-6xl font-bold text-foreground min-w-[120px] text-center">
+                  {beers}
+                </div>
+                <Button
+                  onClick={incrementBeers}
+                  size="lg"
+                  variant="outline"
+                  className="h-16 w-16"
+                >
+                  <Plus className="h-6 w-6" />
+                </Button>
+              </div>
               <div className="text-center text-sm text-muted-foreground">
                 Subtotal: ₪{beers * BEER_PRICE}
               </div>
@@ -64,15 +73,27 @@ const PriceCalculator = () => {
                 </Label>
                 <span className="text-sm text-muted-foreground">₪{SHOT_PRICE} each</span>
               </div>
-              <Input
-                id="shots"
-                type="number"
-                min="0"
-                value={shots || ""}
-                onChange={handleShotChange}
-                placeholder="0"
-                className="text-3xl h-16 text-center font-bold"
-              />
+              <div className="flex items-center justify-center gap-4">
+                <Button
+                  onClick={decrementShots}
+                  size="lg"
+                  variant="outline"
+                  className="h-16 w-16"
+                >
+                  <Minus className="h-6 w-6" />
+                </Button>
+                <div className="text-6xl font-bold text-foreground min-w-[120px] text-center">
+                  {shots}
+                </div>
+                <Button
+                  onClick={incrementShots}
+                  size="lg"
+                  variant="outline"
+                  className="h-16 w-16"
+                >
+                  <Plus className="h-6 w-6" />
+                </Button>
+              </div>
               <div className="text-center text-sm text-muted-foreground">
                 Subtotal: ₪{shots * SHOT_PRICE}
               </div>
