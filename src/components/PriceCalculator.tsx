@@ -18,12 +18,20 @@ const PriceCalculator = () => {
   
   const incrementShots = () => setShots(shots + 1);
   const decrementShots = () => setShots(Math.max(0, shots - 1));
+  
+  const resetAll = () => {
+    setBeers(0);
+    setShots(0);
+  };
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-8">
-      <div className="text-center space-y-2">
+      <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold text-foreground">Price Calculator</h1>
         <p className="text-muted-foreground">Calculate your total order price</p>
+        <Button onClick={resetAll} variant="outline" size="lg">
+          Reset
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
