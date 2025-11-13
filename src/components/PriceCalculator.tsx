@@ -25,47 +25,46 @@ const PriceCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-8">
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold text-foreground">Price Calculator</h1>
-        <p className="text-muted-foreground">Calculate your total order price</p>
-        <Button onClick={resetAll} variant="outline" size="lg">
+    <div className="w-full max-w-2xl mx-auto space-y-4 p-4">
+      <div className="text-center space-y-2">
+        <h1 className="text-3xl font-bold text-foreground">Price Calculator</h1>
+        <Button onClick={resetAll} variant="outline" size="sm">
           Reset
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="border-2 hover:border-primary transition-colors">
-          <CardContent className="pt-6">
-            <div className="space-y-4">
+          <CardContent className="pt-4 pb-4">
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="beers" className="text-lg font-semibold">
+                <Label htmlFor="beers" className="text-base font-semibold">
                   Beers 🍺
                 </Label>
-                <span className="text-sm text-muted-foreground">₪{BEER_PRICE} each</span>
+                <span className="text-xs text-muted-foreground">₪{BEER_PRICE}</span>
               </div>
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-3">
                 <Button
                   onClick={decrementBeers}
-                  size="lg"
+                  size="sm"
                   variant="outline"
-                  className="h-16 w-16"
+                  className="h-12 w-12"
                 >
-                  <Minus className="h-6 w-6" />
+                  <Minus className="h-4 w-4" />
                 </Button>
-                <div className="text-6xl font-bold text-foreground min-w-[120px] text-center">
+                <div className="text-4xl font-bold text-foreground min-w-[80px] text-center">
                   {beers}
                 </div>
                 <Button
                   onClick={incrementBeers}
-                  size="lg"
+                  size="sm"
                   variant="outline"
-                  className="h-16 w-16"
+                  className="h-12 w-12"
                 >
-                  <Plus className="h-6 w-6" />
+                  <Plus className="h-4 w-4" />
                 </Button>
               </div>
-              <div className="text-center text-sm text-muted-foreground">
+              <div className="text-center text-xs text-muted-foreground">
                 Subtotal: ₪{beers * BEER_PRICE}
               </div>
             </div>
@@ -73,36 +72,36 @@ const PriceCalculator = () => {
         </Card>
 
         <Card className="border-2 hover:border-primary transition-colors">
-          <CardContent className="pt-6">
-            <div className="space-y-4">
+          <CardContent className="pt-4 pb-4">
+            <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="shots" className="text-lg font-semibold">
+                <Label htmlFor="shots" className="text-base font-semibold">
                   Shots 🥃
                 </Label>
-                <span className="text-sm text-muted-foreground">₪{SHOT_PRICE} each</span>
+                <span className="text-xs text-muted-foreground">₪{SHOT_PRICE}</span>
               </div>
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-3">
                 <Button
                   onClick={decrementShots}
-                  size="lg"
+                  size="sm"
                   variant="outline"
-                  className="h-16 w-16"
+                  className="h-12 w-12"
                 >
-                  <Minus className="h-6 w-6" />
+                  <Minus className="h-4 w-4" />
                 </Button>
-                <div className="text-6xl font-bold text-foreground min-w-[120px] text-center">
+                <div className="text-4xl font-bold text-foreground min-w-[80px] text-center">
                   {shots}
                 </div>
                 <Button
                   onClick={incrementShots}
-                  size="lg"
+                  size="sm"
                   variant="outline"
-                  className="h-16 w-16"
+                  className="h-12 w-12"
                 >
-                  <Plus className="h-6 w-6" />
+                  <Plus className="h-4 w-4" />
                 </Button>
               </div>
-              <div className="text-center text-sm text-muted-foreground">
+              <div className="text-center text-xs text-muted-foreground">
                 Subtotal: ₪{shots * SHOT_PRICE}
               </div>
             </div>
@@ -111,12 +110,12 @@ const PriceCalculator = () => {
       </div>
 
       <Card className="border-4 border-primary bg-gradient-to-br from-primary/5 to-accent/10">
-        <CardContent className="pt-8 pb-8">
-          <div className="text-center space-y-2">
-            <p className="text-lg font-medium text-muted-foreground uppercase tracking-wider">
+        <CardContent className="pt-4 pb-4">
+          <div className="text-center space-y-1">
+            <p className="text-base font-medium text-muted-foreground uppercase tracking-wider">
               Total Price
             </p>
-            <p className="text-7xl font-bold text-primary animate-in fade-in zoom-in duration-300">
+            <p className="text-5xl font-bold text-primary animate-in fade-in zoom-in duration-300">
               ₪{totalPrice}
             </p>
           </div>
