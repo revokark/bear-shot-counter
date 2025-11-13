@@ -4,17 +4,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 const PriceCalculator = () => {
-  const [bears, setBears] = useState<number>(0);
+  const [beers, setBeers] = useState<number>(0);
   const [shots, setShots] = useState<number>(0);
 
-  const BEAR_PRICE = 19;
+  const BEER_PRICE = 19;
   const SHOT_PRICE = 9;
 
-  const totalPrice = bears * BEAR_PRICE + shots * SHOT_PRICE;
+  const totalPrice = beers * BEER_PRICE + shots * SHOT_PRICE;
 
-  const handleBearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleBeerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value) || 0;
-    setBears(Math.max(0, value));
+    setBeers(Math.max(0, value));
   };
 
   const handleShotChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,22 +34,22 @@ const PriceCalculator = () => {
           <CardContent className="pt-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="bears" className="text-lg font-semibold">
-                  Bears 🐻
+                <Label htmlFor="beers" className="text-lg font-semibold">
+                  Beers 🍺
                 </Label>
-                <span className="text-sm text-muted-foreground">${BEAR_PRICE} each</span>
+                <span className="text-sm text-muted-foreground">₪{BEER_PRICE} each</span>
               </div>
               <Input
-                id="bears"
+                id="beers"
                 type="number"
                 min="0"
-                value={bears || ""}
-                onChange={handleBearChange}
+                value={beers || ""}
+                onChange={handleBeerChange}
                 placeholder="0"
                 className="text-3xl h-16 text-center font-bold"
               />
               <div className="text-center text-sm text-muted-foreground">
-                Subtotal: ${bears * BEAR_PRICE}
+                Subtotal: ₪{beers * BEER_PRICE}
               </div>
             </div>
           </CardContent>
@@ -62,7 +62,7 @@ const PriceCalculator = () => {
                 <Label htmlFor="shots" className="text-lg font-semibold">
                   Shots 🥃
                 </Label>
-                <span className="text-sm text-muted-foreground">${SHOT_PRICE} each</span>
+                <span className="text-sm text-muted-foreground">₪{SHOT_PRICE} each</span>
               </div>
               <Input
                 id="shots"
@@ -74,7 +74,7 @@ const PriceCalculator = () => {
                 className="text-3xl h-16 text-center font-bold"
               />
               <div className="text-center text-sm text-muted-foreground">
-                Subtotal: ${shots * SHOT_PRICE}
+                Subtotal: ₪{shots * SHOT_PRICE}
               </div>
             </div>
           </CardContent>
@@ -88,7 +88,7 @@ const PriceCalculator = () => {
               Total Price
             </p>
             <p className="text-7xl font-bold text-primary animate-in fade-in zoom-in duration-300">
-              ${totalPrice}
+              ₪{totalPrice}
             </p>
           </div>
         </CardContent>
