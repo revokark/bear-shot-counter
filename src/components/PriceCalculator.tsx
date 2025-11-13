@@ -26,8 +26,7 @@ const PriceCalculator = () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-4 p-4">
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">Price Calculator</h1>
+      <div className="text-center">
         <Button onClick={resetAll} variant="outline" size="sm">
           Reset
         </Button>
