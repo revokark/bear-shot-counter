@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Plus, Minus } from "lucide-react";
 import DisciplineReportDialog from "@/components/DisciplineReportDialog";
+import DisciplineReportsListDialog from "@/components/DisciplineReportsListDialog";
 
 const PriceCalculator = () => {
   const [beers, setBeers] = useState<number>(0);
@@ -29,6 +30,7 @@ const PriceCalculator = () => {
     <div className="w-full max-w-2xl mx-auto space-y-4 p-4">
       <div className="flex justify-center items-center gap-3">
         <DisciplineReportDialog />
+        <DisciplineReportsListDialog />
         <Button onClick={resetAll} variant="outline" size="sm">
           Reset
         </Button>
