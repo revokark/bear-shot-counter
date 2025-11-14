@@ -67,32 +67,8 @@ const DisciplineReportDialog = () => {
         </DialogHeader>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="event-description" className="text-right block">
-              תיאור האירוע
-            </Label>
-            <Textarea
-              id="event-description"
-              value={eventDescription}
-              onChange={(e) => setEventDescription(e.target.value)}
-              className="resize-none text-right"
-              dir="rtl"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="who-performed" className="text-right block">
-              מי ביצע את האירוע
-            </Label>
-            <Input
-              id="who-performed"
-              value={whoPerformed}
-              onChange={(e) => setWhoPerformed(e.target.value)}
-              className="text-right"
-              dir="rtl"
-            />
-          </div>
-          <div className="space-y-2">
             <Label htmlFor="reporter-name" className="text-right block">
-              שם המדווח
+              שם המדווח *
             </Label>
             <Input
               id="reporter-name"
@@ -100,6 +76,33 @@ const DisciplineReportDialog = () => {
               onChange={(e) => setReporterName(e.target.value)}
               className="text-right"
               dir="rtl"
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="who-performed" className="text-right block">
+              שם מבצע העבירה *
+            </Label>
+            <Input
+              id="who-performed"
+              value={whoPerformed}
+              onChange={(e) => setWhoPerformed(e.target.value)}
+              className="text-right"
+              dir="rtl"
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="event-description" className="text-right block">
+              תיאור העברה *
+            </Label>
+            <Textarea
+              id="event-description"
+              value={eventDescription}
+              onChange={(e) => setEventDescription(e.target.value)}
+              className="resize-none text-right"
+              dir="rtl"
+              required
             />
           </div>
           <Button onClick={handleSubmit} disabled={isSubmitting} className="w-full">
