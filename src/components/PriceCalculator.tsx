@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Plus, Minus } from "lucide-react";
 import DisciplineReportDialog from "@/components/DisciplineReportDialog";
 import DisciplineReportsListDialog from "@/components/DisciplineReportsListDialog";
-import JokeDialog from "@/components/JokeDialog";
+import BackgroundImageButton from "@/components/BackgroundImageButton";
+
+const BG_STORAGE_KEY = "site_background_image";
 
 const PriceCalculator = () => {
   const [beers, setBeers] = useState<number>(0);
   const [shots, setShots] = useState<number>(0);
+  const [backgroundImage, setBackgroundImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem(BG_STORAGE_KEY);
+    if (saved) setBackgroundImage(saved);
+  }, []);
 
   const BEER_PRICE = 12;
   const SHOT_PRICE = 10;
