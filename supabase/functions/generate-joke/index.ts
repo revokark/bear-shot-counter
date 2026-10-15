@@ -63,17 +63,15 @@ Deno.serve(async (request) => {
     }
     return Response.json({ joke }, { headers: corsHeaders });
   } catch (error) {
+    const upstreamStatus = (error as { statusCode?: number }).statusCode;
     const message =
       error instanceof Error && error.message ? error.message : "הבקשה ל-AI נכשלה. נסו שוב.";
-    const status =
-      typeof (error as { statusCode?: number }).statusCode === "number"
-        ? (error as { statusCode?: number }).statusCode!
-        : 500;
-    const safeStatus = status === 429 || status === 5xxIsAllowed(status) ? status : 500;
-    return Response.json({ error: message }, { status: safeStatus, headers: corsHeaders });
+    const isRetryable =
+      (typeof upstreamStatus === "number" && upstreamStatus >= 500 && upstreamStatus <= 599) ||
+      upstreamStatus === 429;
+    return Response.json(
+      { error: message },
+      { status: isRetryable ? upstreamStatus : 500, headers: corsHeaders },
+    );
   }
 });
-
-function 5xxIsAllowed(status: number) {
-  return status >= 500 && status <= 599;
-}
