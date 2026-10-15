@@ -34,7 +34,7 @@ const PriceCalculator = () => {
   return (
     <div className="w-full max-w-2xl mx-auto space-y-4 p-4">
       <div className="flex flex-wrap justify-center items-center gap-3">
-        <JokeDialog />
+        <BackgroundImageButton onImageChange={setBackgroundImage} />
         <DisciplineReportDialog />
         <DisciplineReportsListDialog />
       </div>
