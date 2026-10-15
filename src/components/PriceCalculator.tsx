@@ -11,8 +11,8 @@ const PriceCalculator = () => {
   const [beers, setBeers] = useState<number>(0);
   const [shots, setShots] = useState<number>(0);
 
-  const BEER_PRICE = 19;
-  const SHOT_PRICE = 9;
+  const BEER_PRICE = 12;
+  const SHOT_PRICE = 10;
 
   const totalPrice = beers * BEER_PRICE + shots * SHOT_PRICE;
 
@@ -22,10 +22,6 @@ const PriceCalculator = () => {
   const incrementShots = () => setShots(shots + 1);
   const decrementShots = () => setShots(Math.max(0, shots - 1));
   
-  const resetAll = () => {
-    setBeers(0);
-    setShots(0);
-  };
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-4 p-4">
@@ -33,9 +29,6 @@ const PriceCalculator = () => {
         <JokeDialog />
         <DisciplineReportDialog />
         <DisciplineReportsListDialog />
-        <Button onClick={resetAll} variant="outline" size="sm">
-          Reset
-        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
